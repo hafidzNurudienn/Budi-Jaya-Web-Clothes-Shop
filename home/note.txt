@@ -1,0 +1,138 @@
+<select class="sizeSelect">
+    <option value="" disabled selected>Select Size</option>
+    ${sizeOptions}
+</select>
+
+Index.php
+Line 102 : &gambar=<?php echo $data['gambar'];?>
+
+Tambah.php
+<div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Kategori:</label>
+                <select name="kategori" id="kategori" class="form-control">
+                <!-- Menampilkan daftar kategori produk di dalam select list -->
+                <?php
+                    
+                    $sql="select * from kategori order by id_kategori asc";
+                    $hasil=mysqli_query($kon,$sql);
+                    while ($data = mysqli_fetch_array($hasil)):
+                ?>
+                    <option value="<?php echo $data['id_kategori']; ?>"><?php echo $data['nama_kategori']; ?></option>
+                    <?php endwhile; ?>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Sub Kategori:</label>
+                <select name="sub_kategori"  id="sub_kategori" class="form-control">
+                <!-- Menampilkan daftar kategori produk di dalam select list -->
+
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Harga:</label>
+                <input name="harga" type="number" id="harga" class="form-control" placeholder="Masukan harga" required>
+            </div>
+            <div class="form-group">
+                <label id="info_harga"> </label>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Stok:</label>
+                <input name="stok" type="number" class="form-control" placeholder="Masukan stok" required>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6">
+            <div class="form-group">
+                <div id="msg"></div>
+                <label>Gambar Produk:</label>
+                <input type="file" name="gambar" class="file" >
+                    <div class="input-group my-3">
+                        <input type="text" class="form-control" disabled placeholder="Upload Gambar" id="file">
+                        <div class="input-group-append">
+                                <button type="button" id="pilih_gambar" class="browse btn btn-dark">Pilih</button>
+                        </div>
+                    </div>
+                <img src="dist/img/img80.png" id="preview" class="img-thumbnail">
+            </div>
+        </div>
+
+Edit.php
+Line 145 :
+<div class="col-sm-6">
+            <div class="form-group">
+                <div id="msg"></div>
+                <label>Ganti gambar:</label>
+                <input type="file" name="gambar_baru" class="file" >
+                    <div class="input-group my-3">
+                        <input type="text" class="form-control" disabled placeholder="Upload Gambar" id="file">
+                        <div class="input-group-append">
+                                <button type="button" id="pilih_gambar" class="browse btn btn-dark">Pilih</button>
+                        </div>
+                    </div>
+                <img src="pages/produk/gambar/<?php echo $data['gambar'];?>" id="preview" class="img-thumbnail">
+                <input type="hidden" name="gambar_saat_ini" value="<?php echo $data["gambar"];?>">
+            </div>
+        </div>
+
+Line 118 :
+<div class="col-sm-6">
+            <div class="form-group">
+                <label>Berat (gram):</label>
+                <input name="berat" type="number" step="any" class="form-control" value="<?php echo $data['berat'];?>" placeholder="Masukan berat (gram)" required>
+                <p class="text-info">Berat produk mempengaruhi biaya ongkir</p>
+            </div>
+        </div>
+
+Line 108 :
+<div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Kategori:</label>
+                <select name="kategori" id="kategori" class="form-control">
+                <!-- Menampilkan daftar kategori produk di dalam select list -->
+                <?php
+                    
+                    $sql="select * from kategori order by id_kategori asc";
+                    $hasil=mysqli_query($kon,$sql);
+                    while ($ambil = mysqli_fetch_array($hasil)):
+                ?>
+                    <option  <?php if ($data['kategori']==$ambil['id_kategori']) echo "selected"; ?> value="<?php echo $ambil['id_kategori']; ?>"><?php echo $ambil['nama_kategori']; ?></option>
+                    <?php endwhile; ?>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-6">
+
+            <div class="form-group">
+                <label>Sub Kategori:</label>
+                <select name="sub_kategori" id="sub_kategori" class="form-control">
+                <!-- Menampilkan daftar kategori produk di dalam select list -->
+                <?php
+                    
+                    $sql="select * from sub_kategori where id_kategori='".$data['kategori']."' order by id_sub_kategori asc";
+                    $hasil=mysqli_query($kon,$sql);
+                    while ($ambil = mysqli_fetch_array($hasil)):
+                ?>
+                    <option value="<?php echo $ambil['id_sub_kategori']; ?>" <?php if ($ambil['id_sub_kategori']==$data['sub_kategori']) echo "selected";?> ><?php echo $ambil['nama_sub_kategori']; ?></option>
+                    <?php endwhile; ?>
+                </select>
+            </div>
+        </div>
+    </div>
+
+Line 64:
+kategori='$kategori',
+sub_kategori='$sub_kategori',
+berat='$berat',

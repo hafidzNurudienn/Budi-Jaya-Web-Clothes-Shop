@@ -1,0 +1,106 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+.cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  height: fit-content;
+  max-width: 100%;
+  background-color: #c4c0ce;
+  padding: 4rem 1rem;
+  display: flex;
+  overflow: hidden;
+  border-radius: 15px;
+  margin: 30px 0;
+}
+.container .img {
+  width: 60%;
+  height: 100%;
+  position: relative;
+  left: -60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container img {
+  max-width: 350px;
+}
+.container .questions {
+  width: 100%;
+  margin-right: 4rem;
+}
+.container .questions h1 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+.container .questions h3 {
+  font-size: 18px;
+  margin: 20px 0;
+  color: rgb(90, 90, 90);
+  display: flex;
+  font-weight: 600;
+  justify-content: space-between;
+  align-items: center;
+}
+.container .questions h3:hover {
+  color: crimson;
+  cursor: pointer;
+}
+.container .questions h3 img {
+  margin-left: 4rem;
+  height: 7px;
+  cursor: pointer;
+  transition: transform 300ms ease-in;
+}
+.container .questions p {
+  font-size: 15px;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+#ukuran {
+  align-self: center;
+}
+
+@media only screen and (max-width: 760px) {
+  .container {
+    align-self: center;
+    max-width: 90%;
+    padding: 1rem;
+    display: block;
+    flex-direction: column;
+    overflow: visible;
+    /* height: 450px; */
+  }
+  .container .img {
+    width: 60%;
+    height: fit-content;
+    left: 50%;
+    transform: translateX(-50%) translateY(-125px);
+  }
+  .container img {
+    max-width: 250px;
+  }
+  .container .questions {
+    width: 100%;
+    margin-right: 0;
+    position: relative;
+    top: -90px;
+  }
+  .container .questions h1 {
+    text-align: center;
+  }
+}

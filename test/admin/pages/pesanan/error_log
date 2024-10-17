@@ -1,0 +1,5 @@
+[30-Jul-2024 04:05:55 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'p.kode_produk' in 'on clause' in /home/budijaya/public_html/home/test/admin/pages/pesanan/update-status-pembayaran.php:36
+Stack trace:
+#0 /home/budijaya/public_html/home/test/admin/pages/pesanan/update-status-pembayaran.php(36): mysqli_query()
+#1 {main}
+  thrown in /home/budijaya/public_html/home/test/admin/pages/pesanan/update-status-pembayaran.php on line 36
